@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<meta charset="utf-8">
+	<meta name="viewport" content ="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content ="Cipolat">
+	<meta name="description" content ="Esempio di Template per griglia">
+	<title>TemplateForm</title>
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<script type="application/javascript" src="js/script.js"></script>
+	<!--queste di seguito usate, solo per componenti boostrap e plug-in jquery-->
+	<script type="application/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
+	<script type="application/javascript" src="vendor/jquery/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2 green">
+			</div>
+			<div class="col-sm-8 yellow">
+				<form name="f1" method="post" action="php/leggiForm.php">
+					<div class="form-goup input-group">
+						<input type="text" id="txtNome" class="form-control" placeHolder="Nome">
+					</div>
+					<div class="form-goup input-group">
+						<input type="text" id="txtCognome" class="form-control" placeHolder="Cognome">
+					</div>
+					<div class="form-goup input-group">
+						<input type="submit" id="btnInvia" value="Invia" class="btn btn-secondary form-control" >
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-2 green">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
