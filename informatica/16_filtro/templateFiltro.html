@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content ="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content ="Cipolat">
+	<meta name="description" content ="Filtro">
+	<title>TemplateTableFormFiltro</title>
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<script type="application/javascript" src="js/script.js"></script>
+	<script type="application/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
+	<script type="application/javascript" src="vendor/jquery/jquery-3.4.1.js"></script>
+	<script>
+			var vNomi;
+            $(document).ready(
+                function(){
+                    $.get("jsonNomi.js", function(data,status){
+					vNomi=JSON.parse(data);
+					creaTabella(vNomi);
+					});
+                });
+				
+				function filtra(){
+				cognomeInserito=document.getElementById('txtCognome');
+				nomeInserito=document.getElementById('txtNome');
+                for(var cntRiga=0; cntRiga<vNomi.length; cntRiga=cntRiga+1){
+					if(vNomi[cntRiga].cognome== cognomeInserito && vNomi[cntRiga].nome==nomeInserito ){
+					cognomeTd=$("<td>" + vNomi[cntRiga].cognome +"</td>");
+                    nomeTd=$("<td>" + vNomi[cntRiga].nome +"</td>");
+                    rowTr=$("<tr></tr>");
+					rowTr.append(cognomeTd,nomeTd);
+                    $("#idTable").append(rowTr);
+					console.log("creazione tabella");
+					}                    
+                }
+            }
+            function creaTabella(objVector){
+                for(var cntRiga=0; cntRiga<objVector.length; cntRiga=cntRiga+1){
+                    cognomeTd=$("<td>" + objVector[cntRiga].cognome +"</td>");
+                    nomeTd=$("<td>" + objVector[cntRiga].nome +"</td>");
+                    rowTr=$("<tr></tr>");
+                    rowTr.append(cognomeTd,nomeTd);
+                    $("#idTable").append(rowTr);
+					console.log("creazione tabella");
+                }
+            };
+        </script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2 blue">
+			</div>
+			<div class="col-sm-8 ">
+				<form name="f1">
+					<div class="form-goup input-group">
+						<input type="text" id="txtCognome" class="form-control" placeHolder="Cognome">
+					</div>
+					<div class="form-goup input-group">
+						<input type="text" id="txtNome" class="form-control" placeHolder="Nome">
+					</div>
+					<div class="form-goup input-group">
+						<input type="button" id="btnFiltra" value="Filtra" onclick="filtra()" class="btn btn-secondary form-control" >
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-2 blue">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2 red">
+			</div>
+			<div class="col-sm-8">
+				<table class="table table-hover" id="idTable">
+				<tr>
+				<th>Cognome</th>
+				<th>Nome</th>
+				</tr>
+				<tr></tr>
+				</table>
+			</div>
+			<div class="col-sm-2 red">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
