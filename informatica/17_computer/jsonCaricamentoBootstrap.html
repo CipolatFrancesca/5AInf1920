@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content ="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content ="Cipolat">
+	<meta name="description" content ="Tabella computer json">
+	<title>Tabella computer</title>
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<script type="application/javascript" src="js/script.js"></script>
+	<script type="application/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
+	<script type="application/javascript" src="vendor/jquery/jquery-3.4.1.js"></script>
+	<script>
+            $(document).ready(
+                function(){
+                    $.get("jsonComputer.js", function(data,status){
+					var vNomi=JSON.parse(data);
+						 creaTabella(vComputer);
+					});
+                });
+
+            function creaTabella(objVector){
+                for(var cntRiga=0; cntRiga<objVector.length; cntRiga=cntRiga+1){
+                    idTd=$("<td>" + objVector[cntRiga].id +"</td>");
+                    marcaTastieraTd=$("<td>" + objVector[cntRiga].marcaTastiera +"</td>");
+                    marcaVideoTd=$("<td>" + objVector[cntRiga].marcaVideo +"</td>");
+                    marcaCaseTd=$("<td>" + objVector[cntRiga].marcaCase +"</td>");
+                    rowTr=$("<tr></tr>");
+                    rowTr.append(idTd,marcaTastieraTd,marcaVideoTd,marcaCaseTd);
+                    $("#idTable").append(rowTr);
+                }
+            };
+        </script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2 red">
+			</div>
+			<div class="col-sm-8">
+				<table class="table table-hover" id="idTable">
+				<tr>
+				<th>id</th>
+				<th>marcaTastiera</th>
+				<th>marcaVideo</th>
+				<th>marcaCase</th>
+				</tr>
+				<tr></tr>
+				</table>
+			</div>
+			<div class="col-sm-2 red">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
